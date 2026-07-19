@@ -220,31 +220,408 @@ Answer: Paging divides memory into fixed-size blocks (pages/frames), while segme
       }
     }
 
+    if (userMessage.includes('differential calculus') || userMessage.includes('calculus')) {
+      if (systemPrompt.includes('summary')) {
+        return `### Comprehensive AI Overview: Differential Calculus
+This unit focuses on advanced differentiation concepts, successive derivative extensions, limits, mean value theorems, power series representations, and multivariable functions.
+
+**Detailed Topic Breakdown:**
+
+1. **Successive Differentiation & Leibniz Theorem**:
+   - Successive Differentiation: Finding the n-th derivative of a function.
+   - Leibniz Theorem: Evaluates the n-th derivative of the product of two functions u and v: (uv)_n = Σ (n_C_r) * u_(n-r) * v_r.
+
+2. **Mean Value Theorems**:
+   - **Rolle\'s Theorem**: If f(x) is continuous in [a,b], differentiable in (a,b), and f(a) = f(b), then there exists a point c ∈ (a,b) where f\'(c) = 0.
+   - **Lagrange\'s Mean Value Theorem (LMVT)**: Relaxes f(a) = f(b). There exists a point c ∈ (a,b) where f\'(c) = [f(b) - f(a)] / (b - a).
+   - **Cauchy\'s Mean Value Theorem**: Generalizes LMVT to two functions f(x) and g(x). There exists c ∈ (a,b) where f\'(c)/g\'(c) = [f(b) - f(a)] / [g(b) - g(a)].
+
+3. **Power Series Expansions**:
+   - **Maclaurin\'s Series**: Expands f(x) around x = 0: f(x) = f(0) + x f\'(0) + (x^2/2!) f\'\'(0) + ...
+   - **Taylor\'s Series**: Expands f(x) around x = a: f(x) = f(a) + (x-a) f\'(a) + [(x-a)^2/2!] f\'\'(a) + ...
+
+4. **Multivariable Calculus (Partial Differentiation)**:
+   - Partial derivatives: Differentiation with respect to one variable keeping others constant.
+   - **Euler\'s Theorem for Homogeneous Functions**: If f(x,y) is homogeneous of degree n, then x(∂f/∂x) + y(∂f/∂y) = n f.
+
+5. **Jacobian & Change of Variables**:
+   - Jacobian determinant: Measures the local scale factor of a coordinate transformation.
+   - J = ∂(u,v)/∂(x,y) = | ∂u/∂x  ∂u/∂y | / | ∂v/∂x  ∂v/∂y |.
+
+**Important Formulas:**
+- Leibniz Theorem: (uv)_n = u_n v + n u_(n-1) v_1 + [n(n-1)/2!] u_(n-2) v_2 + ...
+- Euler\'s Theorem: x(∂f/∂x) + y(∂f/∂y) = n f.
+- Euler\'s Second-Order: x^2(∂^2f/∂x^2) + 2xy(∂^2f/∂x∂y) + y^2(∂^2f/∂y^2) = n(n-1)f.
+
+**Exam Strategy:**
+Expect Leibniz theorem proofs and multi-variable Jacobians. Maclaurin expansions for standard functions (e^x, sin x, log(1+x)) are highly common.`;
+      }
+      return `### Revision Notes: Differential Calculus
+Key theorems and n-th derivative standard forms.
+
+- **Standard n-th Derivatives**:
+  - d^n/dx^n (x^m) = m!/(m-n)! * x^(m-n)
+  - d^n/dx^n (e^(ax)) = a^n * e^(ax)
+  - d^n/dx^n [log(ax+b)] = (-1)^(n-1) * (n-1)! * a^n / (ax+b)^n
+  - d^n/dx^n [sin(ax+b)] = a^n * sin(ax + b + nπ/2)
+- **Leibniz Theorem Formula**:
+  - (u v)_n = u_n v + C(n,1) u_(n-1) v_1 + C(n,2) u_(n-2) v_2 + ... + u v_n
+- **Homogeneous Functions**:
+  - A function f(x,y) is homogeneous of degree n if f(tx, ty) = t^n * f(x,y).
+- **Euler\'s Theorem Extension**:
+  - If u = f(x,y) is homogeneous of degree n, then:
+    - x(∂u/∂x) + y(∂u/∂y) = n * u
+    - x^2(∂^2u/∂x^2) + 2xy(∂^2u/∂x∂y) + y^2(∂^2u/∂y^2) = n(n-1)u
+- **Jacobian Chain Rule**:
+  - If u, v are functions of r, s and r, s are functions of x, y:
+    - ∂(u,v)/∂(x,y) = [∂(u,v)/∂(r,s)] * [∂(r,s)/∂(x,y)]
+- **Jacobian Inverse Property**:
+  - J * J\' = 1, where J = ∂(u,v)/∂(x,y) and J\' = ∂(x,y)/∂(u,v).`;
+    }
+
+    if (userMessage.includes('multiple integrals')) {
+      if (systemPrompt.includes('summary')) {
+        return `### Comprehensive AI Overview: Multiple Integrals
+This unit extends integration to higher dimensions. It covers double and triple integrals, switching integration limits (change of order), transformation of coordinates (Jacobian), and applications to physical geometry (area, volume, mass centers).
+
+**Detailed Topic Breakdown:**
+
+1. **Double Integrals**:
+   - Integration over 2D planar regions. Evaluated as iterated integrals.
+   - Used to compute Area: A = ∫∫_R dx dy.
+
+2. **Change of Order of Integration**:
+   - Altering the integration sequence (e.g., from dx dy to dy dx) when limits are variable or hard to evaluate directly.
+   - Requires sketching the bounding region R and identifying new horizontal/vertical strips.
+
+3. **Triple Integrals**:
+   - Integration over 3D spatial volumes: V = ∫∫∫_V dx dy dz.
+   - Evaluated as three successive single integrals.
+
+4. **Change of Variables (Coordinate Transformations)**:
+   - Transforming variables (e.g., Cartesian to Polar/Cylindrical/Spherical) to simplify integration limits.
+   - Uses the Jacobian determinant factor: dx dy = |J| du dv.
+     - Polar: x = r cos θ, y = r sin θ => dx dy = r dr dθ.
+     - Spherical: x = r sin θ cos φ, y = r sin θ sin φ, z = r cos θ => dx dy dz = r^2 sin θ dr dθ dφ.
+
+5. **Dirichlet\'s Integrals & Liouville\'s Extension**:
+   - Dirichlet\'s formula evaluates integrals of the type ∫∫...∫ x^(l-1) y^(m-1) z^(n-1)... dx dy dz... over the domain x+y+z... <= 1.
+   - Evaluated directly using Gamma functions: Γ(l)Γ(m)Γ(n)/Γ(l+m+n+1).
+
+**Important Formulas:**
+- Double Integral Area: A = ∫∫ dx dy.
+- Triple Integral Volume: V = ∫∫∫ dx dy dz.
+- Polar Jacobian: J = r.
+- Spherical Jacobian: J = r^2 sin θ.
+- Dirichlet\'s Integral (3 variables): ∫∫∫ x^(p-1) y^(q-1) z^(r-1) dx dy dz = Γ(p)Γ(q)Γ(r) / Γ(p+q+r+1).
+
+**Exam Tips:**
+Changing the order of integration and calculating volumes using triple integrals are heavily weighted exam questions. Practice sketching circular and parabolic regions.`;
+      }
+      return `### Revision Notes: Multiple Integrals
+Quick formulas and steps for coordinate transformations.
+
+- **Iterated Integral Evaluation**:
+  - Always integrate from the innermost limits (usually variables) to the outermost limits (always constants).
+- **Change of Order Steps**:
+  1. Sketch the boundary curves from original limits.
+  2. Identify the integration region.
+  3. Swap from vertical strip (y-limits depend on x) to horizontal strip (x-limits depend on y) or vice-versa.
+  4. Write new limits and integrate.
+- **Jacobian Transformations**:
+  - Cartesian (x,y) -> Polar (r,θ):
+    - x = r cos θ, y = r sin θ
+    - dx dy = r dr dθ
+  - Cartesian (x,y,z) -> Spherical (r,θ,φ):
+    - x = r sin θ cos φ, y = r sin θ sin φ, z = r cos θ
+    - dx dy dz = r^2 sin θ dr dθ dφ
+- **Dirichlet\'s Theorem Formula**:
+  - If x >= 0, y >= 0, z >= 0 and (x + y + z) <= 1:
+    - ∫∫∫ x^(p-1) y^(q-1) z^(r-1) dx dy dz = Γ(p) * Γ(q) * Γ(r) / Γ(p + q + r + 1)
+- **Liouville\'s Extension**:
+  - Evaluates integrals over the domain h_1 <= (x+y+z) <= h_2:
+    - Replace the Γ(p+q+r+1) division with an integral: [Γ(p)Γ(q)Γ(r)/Γ(p+q+r)] * ∫_(h_1)^(h_2) u^(p+q+r-1) f(u) du.`;
+    }
+
+    if (userMessage.includes('vector calculus')) {
+      if (systemPrompt.includes('summary')) {
+        return `### Comprehensive AI Overview: Vector Calculus
+Vector calculus is the study of differentiation and integration of vector fields. It is a vital tool for electromagnetic theory, fluid mechanics, and thermodynamics.
+
+**Detailed Topic Breakdown:**
+
+1. **Vector Differentiation Operations**:
+   - **Gradient (∇f)**: Represents the rate and direction of maximum spatial change of a scalar field f. Normal to surface f(x,y,z) = c.
+   - **Divergence (∇ · F)**: Measures the net outward flux of a vector field F per unit volume.
+   - **Curl (∇ × F)**: Measures the rotation or angular velocity of a vector field F.
+
+2. **Physical Interpretations**:
+   - Solenoidal Field: If Divergence of F = 0 (no source or sink).
+   - Irrotational Field (Conservative): If Curl of F = 0 (field can be written as gradient of scalar potential: F = ∇φ).
+
+3. **Line, Surface, and Volume Integrals**:
+   - Line Integral (∫ F · dr): Work done by force F along curve C.
+   - Surface Integral (∫∫ F · dS): Net flux of vector field F through surface S.
+   - Volume Integral (∫∫∫ div F dV): Mass or field accumulation over a 3D region.
+
+4. **Fundamental Theorems**:
+   - **Green\'s Theorem**: Relates line integral in 2D to double integral over planar area: ∫ (P dx + Q dy) = ∫∫ (∂Q/∂x - ∂P/∂y) dx dy.
+   - **Gauss Divergence Theorem**: Relates surface flux to volume divergence: ∫∫ F · dS = ∫∫∫ (∇ · F) dV.
+   - **Stokes\' Theorem**: Relates line integral of loop to surface flux of curl: ∫ F · dr = ∫∫ (∇ × F) · dS.
+
+**Important Formulas:**
+- ∇ = i(∂/∂x) + j(∂/∂y) + k(∂/∂z)
+- Green\'s: ∫ (P dx + Q dy) = ∫∫ (∂Q/∂x - ∂P/∂y) dx dy.
+- Gauss: ∫∫ F · n dS = ∫∫∫ (∇ · F) dV.
+- Stokes: ∫ F · dr = ∫∫ (∇ × F) · dS.
+
+**Exam Tips:**
+Verify Gauss or Stokes\' Theorem for a given cuboid or hemispherical surface. These theorems are always tested with 10-mark questions.`;
+      }
+      return `### Revision Notes: Vector Calculus
+Core operations, identities, and integral vector equations.
+
+- **Vector Differential Operator**:
+  - Del (∇) = i(∂/∂x) + j(∂/∂y) + k(∂/∂z)
+- **Gradient, Divergence, Curl Definitions**:
+  - Gradient of φ: ∇φ = i(∂φ/∂x) + j(∂φ/∂y) + k(∂φ/∂z) (Result is a vector)
+  - Divergence of F: ∇·F = ∂F_x/∂x + ∂F_y/∂y + ∂F_z/∂z (Result is a scalar)
+  - Curl of F: ∇×F = Det[i, j, k; ∂/∂x, ∂/∂y, ∂/∂z; F_x, F_y, F_z] (Result is a vector)
+- **Key Vector Identities**:
+  - div(curl F) = ∇·(∇×F) = 0 (Divergence of curl is always zero)
+  - curl(grad φ) = ∇×(∇φ) = 0 (Curl of gradient is always zero)
+  - div(φ F) = φ div F + F · grad φ
+  - curl(φ F) = φ curl F + (grad φ) × F
+- **Solenoidal & Irrotational Test**:
+  - Vector F is Solenoidal <=> ∇·F = 0
+  - Vector F is Irrotational <=> ∇×F = 0
+- **Vector Theorems Cheat Sheet**:
+  - **Green\'s**: Relates a line integral to a double integral.
+  - **Gauss**: Relates a surface integral to a volume integral.
+  - **Stokes\'**: Relates a line integral to a surface integral.`;
+    }
+
+    if (userMessage.includes('beta & gamma') || userMessage.includes('gamma function') || userMessage.includes('beta function')) {
+      if (systemPrompt.includes('summary')) {
+        return `### Comprehensive AI Overview: Beta & Gamma Functions
+This unit covers improper integrals and introduces the special Beta and Gamma transcendental functions. These functions simplify complicated calculus integrals and are widely applied in quantum mechanics, engineering statistics, and fractional derivatives.
+
+**Detailed Topic Breakdown:**
+
+1. **Improper Integrals**:
+   - Integrals where either limits are infinite or the integrand is discontinuous at some point in the interval.
+   - Evaluated using limits to test convergence or divergence.
+
+2. **Gamma Function (Eulerian Integral of the Second Kind)**:
+   - Defined as: Γ(n) = ∫_0^∞ e^-x * x^(n-1) dx (for n > 0).
+   - Acts as an extension of factorials to real and complex numbers.
+   - Key recurrence: Γ(n+1) = n Γ(n). For integers, Γ(n+1) = n!.
+   - Special value: Γ(1/2) = √π.
+
+3. **Beta Function (Eulerian Integral of the First Kind)**:
+   - Defined as: B(m,n) = ∫_0^1 x^(m-1) * (1-x)^(n-1) dx (for m > 0, n > 0).
+   - Trigonometric Form: B(m,n) = 2 ∫_0^(π/2) (sin θ)^(2m-1) * (cos θ)^(2n-1) dθ.
+
+4. **Relationship Between Beta and Gamma**:
+   - B(m,n) = Γ(m) * Γ(n) / Γ(m+n).
+   - Extremely useful for evaluating trigonometric integrals: ∫_0^(π/2) (sin θ)^p (cos θ)^q dθ = [Γ((p+1)/2) * Γ((q+1)/2)] / [2 * Γ((p+q+2)/2)].
+
+5. **Duplication Formula**:
+   - Relates Gamma functions of argument m and (m + 1/2):
+     - Γ(m) * Γ(m + 1/2) = [√π / 2^(2m-1)] * Γ(2m).
+
+**Important Formulas:**
+- Gamma definition: Γ(n) = ∫_0^∞ e^-t t^(n-1) dt.
+- Beta definition: B(m,n) = ∫_0^1 x^(m-1) (1-x)^(n-1) dx.
+- Relation: B(m,n) = Γ(m)Γ(n)/Γ(m+n).
+- Duplication: Γ(m)Γ(m+1/2) = [√π / 2^(2m-1)] * Γ(2m).
+- Special Value: Γ(1/2) = √π.
+
+**Exam Strategy:**
+Master evaluations of trigonometric definite integrals from 0 to π/2 using the Beta-Gamma relation. Proving the duplication formula is a very common theoretical question.`;
+      }
+      return `### Revision Notes: Beta & Gamma Functions
+Key identities, recurrence formulas, and integral evaluations.
+
+- **Gamma Function Properties**:
+  - Γ(1) = 1
+  - Γ(n+1) = n * Γ(n) (valid for any positive real number)
+  - Γ(n+1) = n! (if n is a positive integer)
+  - Γ(1/2) = √π
+- **Beta Function Properties**:
+  - Symmetry: B(m,n) = B(n,m)
+  - Alternate Form (Limits 0 to ∞): B(m,n) = ∫_0^∞ [x^(m-1) / (1+x)^(m+n)] dx
+- **Trigonometric Integral Reduction Formula**:
+  - ∫_0^(π/2) sin^p(θ) cos^q(θ) dθ = Γ((p+1)/2) * Γ((q+1)/2) / [2 * Γ((p+q+2)/2)]
+- **Useful Integrals**:
+  - ∫_0^∞ e^(-x^2) dx = √π / 2
+- **Gamma Recurrence for Fractions**:
+  - Γ(5/2) = (3/2) * (1/2) * Γ(1/2) = 3√π / 4
+  - Γ(7/2) = (5/2) * (3/2) * (1/2) * Γ(1/2) = 15√π / 8
+- **Duplication Formula Form**:
+  - 2^(2n-1) * Γ(n) * Γ(n + 1/2) = √π * Γ(2n)`;
+    }
+
+    if (userMessage.includes('electromagnetic field') || userMessage.includes('wave propagation')) {
+      if (systemPrompt.includes('summary')) {
+        return `### Comprehensive AI Overview: Electromagnetic Field Theory
+EMT deals with static and dynamic electric and magnetic fields, culminating in Maxwell\'s Equations and electromagnetic wave propagation.
+
+**Key Concepts:**
+1. **Maxwell\'s Equations**: Four fundamental equations unifying electricity and magnetism.
+2. **Displacement Current**: James Clerk Maxwell\'s term explaining magnetic fields produced by changing electric fields.
+3. **Poynting Vector**: Represents the directional energy flux density (power flow) of an EM wave: S = E × H.
+
+**Exam Tips:**
+Expect derivations of electromagnetic wave equations in free space and proving that EM waves are transverse.`;
+      }
+      return `### Revision Notes: Electromagnetic Field Theory
+- **Maxwell\'s 4 Equations**:
+  1. ∇·D = ρ (Gauss\'s Law for Electrostatics)
+  2. ∇·B = 0 (Gauss\'s Law for Magnetism)
+  3. ∇×E = -dB/dt (Faraday\'s Law of Induction)
+  4. ∇×H = J + dD/dt (Ampere\'s Circuital Law with displacement current)
+- **Poynting Theorem**: Statement of conservation of energy for EM fields.`;
+    }
+
+    if (userMessage.includes('quantum mechanics')) {
+      if (systemPrompt.includes('summary')) {
+        return `### Comprehensive AI Overview: Quantum Mechanics
+Quantum mechanics describes the physical properties of nature at the scale of atoms and subatomic particles.
+
+**Key Concepts:**
+1. **Wave-Particle Duality**: Matter exhibits both particle-like and wave-like behavior (de Broglie hypothesis).
+2. **Schrodinger Equation**: Fundamental equation of quantum mechanics describing how the quantum state of a system changes with time.
+3. **Uncertainty Principle**: Position and momentum cannot be measured simultaneously with absolute precision.
+
+**Formula:**
+- Schrodinger Equation: Hψ = Eψ`;
+      }
+      return `### Revision Notes: Quantum Mechanics
+- **de Broglie Wavelength**: λ = h/p.
+- **Wave Function (ψ)**: Complex probability amplitude. |ψ|^2 represents probability density.
+- **Schrodinger Equation (Time-Independent)**: d^2ψ/dx^2 + (8π^2m/h^2)(E - V)ψ = 0.
+- **Particle in a 1D Box**: Energy is quantized: E_n = n^2 * h^2 / (8mL^2).`;
+    }
+
+    if (userMessage.includes('lasers') || userMessage.includes('fiber optics')) {
+      if (systemPrompt.includes('summary')) {
+        return `### Comprehensive AI Overview: Lasers & Fiber Optics
+Lasers produce highly coherent, monochromatic light, while optical fibers guide this light over long distances with minimal loss.
+
+**Key Concepts:**
+1. **Population Inversion**: Condition where more atoms are in excited states than ground states (essential for laser action).
+2. **Numerical Aperture (NA)**: Light-gathering ability of an optical fiber.
+3. **Einstein Coefficients**: Describe rates of absorption, spontaneous emission, and stimulated emission.
+
+**Formulas:**
+- NA = √(μ_core^2 - μ_cladding^2)
+- Acceptance Angle: θ_a = sin^-1(NA)`;
+      }
+      return `### Revision Notes: Lasers & Fiber Optics
+- **Stimulated Emission**: Incoming photon triggers an excited atom to drop energy levels, emitting a coherent photon.
+- **Pumping**: Mechanism (optical, electrical) to achieve population inversion.
+- **Total Internal Reflection (TIR)**: Guides light in fiber core (core index > cladding index).
+- **V-Number**: Normalized frequency determining the number of modes supported by the fiber.`;
+    }
+
+    if (userMessage.includes('decidability') || userMessage.includes('complexity')) {
+      if (systemPrompt.includes('summary')) {
+        return `### Comprehensive AI Overview: Decidability & P/NP Complexity
+Explores what problems can be solved by computers (decidability) and how efficiently they can be solved (complexity classes).
+
+**Key Concepts:**
+1. **Decidable Language**: A language for which there exists a Turing Machine that halts on all inputs (accept or reject).
+2. **Halting Problem**: Proving that no program can decide if any arbitrary code halts or loops.
+3. **Classes P and NP**: P contains problems solvable in polynomial time; NP contains problems checkable in polynomial time.
+4. **NP-Complete**: The hardest problems in NP; if one is in P, then P = NP.
+
+**Famous Theorems:**
+- Cook-Levin Theorem: SAT is NP-Complete.`;
+      }
+      return `### Revision Notes: Decidability & P/NP Complexity
+- **Recursive Language**: Decidable (Turing Machine always halts).
+- **Recursively Enumerable**: Semi-decidable (TM halts on accept, may loop on reject).
+- **Undecidable Problems**: Halting Problem, Post Correspondence Problem (PCP), State Entry Problem.
+- **Reduction**: Converting problem A to B to show relative difficulty.
+- **P vs NP**: Is checking a solution fundamentally easier than finding one? (Unresolved).`;
+    }
+
     if (userMessage.includes('matrices') || userMessage.includes('math')) {
       if (systemPrompt.includes('summary')) {
         return `### Comprehensive AI Overview: Engineering Mathematics (Matrices)
-Matrices represent systems of linear equations and linear transformations.
+Matrices represent systems of linear equations and linear transformations. This unit covers foundational matrix operations, types, eigenvalues, eigenvectors, and complex algebraic theorems necessary for advanced engineering analysis.
 
-**Key Units & Concepts:**
-1. **Rank of a Matrix**: Maximum number of linearly independent rows or columns.
-2. **Cayley-Hamilton Theorem**: Every square matrix satisfies its own characteristic equation: |A - λI| = 0. Useful for calculating matrix inverses and higher powers of a matrix.
-3. **Eigenvalues & Eigenvectors**: Roots of the characteristic polynomial, essential for stability analysis, engineering mechanics, and structural systems.
-4. **Diagonalization**: Transforming a square matrix into a diagonal matrix using its eigenvalues, simplifying linear operations.
+**Detailed Topic Breakdown:**
+
+1. **Special Types of Matrices**:
+   - **Symmetric Matrix**: A square matrix A where A^T = A.
+   - **Skew-Symmetric Matrix**: A square matrix A where A^T = -A. The diagonal elements are always zero.
+   - **Orthogonal Matrix**: A square matrix A satisfying A * A^T = A^T * A = I. Determinant is always ±1.
+   - **Hermitian & Skew-Hermitian Matrices**: Complex matrix definitions where conjugate transpose equals A or -A.
+   - **Unitary Matrix**: Complex analogue of orthogonal matrix where A * A^H = I.
+
+2. **Rank of a Matrix**:
+   - Defined as the maximum number of linearly independent rows or columns.
+   - Calculated using Elementary Row Transformations to convert the matrix into Echelon Form (upper triangular form).
+   - Normal Form (Canonical Form) [I_r 0; 0 0] where the order of identity matrix yields the rank r.
+
+3. **Systems of Linear Equations**:
+   - Non-Homogeneous (AX = B): Consistent if Rank(A) = Rank(A|B) [Augmented Matrix]. Unique solution if Rank = n; infinite solutions if Rank < n.
+   - Homogeneous (AX = 0): Trivial solution (X = 0) if Rank = n; non-trivial solutions if Rank < n (det(A) = 0).
+
+4. **Cayley-Hamilton Theorem**:
+   - Every square matrix satisfies its own characteristic equation: P(λ) = det(A - λI) = 0.
+   - Replacing λ with matrix A yields P(A) = O (Null matrix).
+   - Crucial for finding matrix inverses A^-1 and calculating higher powers A^k without repeated multiplication.
+
+5. **Eigenvalues & Eigenvectors**:
+   - Eigenvalues (λ) are roots of the characteristic equation det(A - λI) = 0.
+   - Eigenvectors (X) satisfy AX = λX (non-zero vectors).
+   - Real Symmetric matrices always have real eigenvalues.
+
+6. **Diagonalization**:
+   - Transforming a matrix A into a diagonal matrix D via a similarity transformation D = P^-1 * A * P.
+   - P is the Modal Matrix whose columns are the linearly independent eigenvectors of A.
+   - The diagonal elements of D are the eigenvalues of A.
 
 **Important Formulas:**
 - Characteristic Equation: det(A - λI) = 0.
-- Inverse via Cayley-Hamilton: A^-1 = P(A) where P is a polynomial of degree n-1.
+- Inverse via Cayley-Hamilton: A^-1 = (1/c_n) * [A^(n-1) - c_1 A^(n-2) ... - c_(n-1) I].
+- Sum of Eigenvalues = Trace of A.
+- Product of Eigenvalues = Determinant of A.
 
 **Exam Strategy:**
 Master calculation steps for eigenvalues of 3x3 matrices. Diagonalization proofs and Cayley-Hamilton inverse verifications appear in every sessional and final paper.`;
       }
       if (systemPrompt.includes('notes')) {
         return `### Revision Notes: Matrices
-- **Symmetric Matrix**: A^T = A.
-- **Skew-Symmetric**: A^T = -A (all diagonal entries must be 0).
-- **Orthogonal**: A * A^T = I (transpose is equal to the inverse).
-- **Inverse Calculation**: A^-1 = Adj(A) / det(A).
-- **Linear Independence**: A set of vectors is linearly independent if no vector can be written as a linear combination of the others.`;
+Complete formula guide and exam checklist for Unit 1.
+
+- **Matrix Types Properties**:
+  - Symmetric: a_ij = a_ji
+  - Skew-Symmetric: a_ij = -a_ji (and a_ii = 0)
+  - Orthogonal: A^-1 = A^T
+- **Elementary Row Transformations (Rules)**:
+  - Interchanging any two rows (R_i <-> R_j)
+  - Multiplying a row by a non-zero scalar (R_i -> k * R_i)
+  - Adding a scalar multiple of a row to another row (R_i -> R_i + k * R_j)
+- **Rank Properties**:
+  - Rank(A) = Rank(A^T)
+  - Rank(AB) <= min(Rank(A), Rank(B))
+  - If det(A) != 0, Rank(A) = n (Full Rank)
+- **Cayley-Hamilton Theorem & Inverse Application**:
+  - If λ^3 - c_1 λ^2 + c_2 λ - c_3 = 0, then A^3 - c_1 A^2 + c_2 A - c_3 I = 0.
+  - Pre-multiply by A^-1 to solve: A^-1 = (1/c_3)(A^2 - c_1 A + c_2 I).
+- **Eigenvalues Properties**:
+  - Sum of Eigenvalues = Trace(A) (Sum of diagonal elements).
+  - Product of Eigenvalues = det(A).
+  - Eigenvalues of A^T are same as A.
+  - Eigenvalues of A^-1 are 1/λ_i.
+  - Eigenvalues of A^k are λ_i^k.
+- **Diagonalization Condition**:
+  - Matrix A is diagonalizable if and only if it has n linearly independent eigenvectors.
+  - If all eigenvalues are distinct, it is guaranteed to be diagonalizable.`;
       }
       if (systemPrompt.includes('qa pairs')) {
         return `Q1: State the Cayley-Hamilton Theorem.
